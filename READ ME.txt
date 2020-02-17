@@ -1,10 +1,11 @@
-	DATA
-	For the assignment, the dataset that was collected from Kaggle [1], is a representation of  	weather. It contains a year wide weather report of temperature, humidity and the condition of 	a particular area, where temperature and humidity are continuous values and 	summary of the 	weather is a categorical value. Hence, there are a total of 3 features with 150 	instances 	chosen from the original dataset at random. The dataset initially doesn’t have any 	missing 	values. The temperature value range from 5-20 (*C) approximately, and the humidity 	value 	have a range of 0 to 1.
-	METHODS
+DATA
+The dataset that was collected from Kaggle [1], is a representation of weather. It contains a year wide weather report of temperature, humidity and the condition of 	a particular area, where temperature and humidity are continuous values and 	summary of the 	weather is a categorical value. Hence, there are a total of 3 features with 150 instances chosen from the original dataset at random. The dataset initially doesn’t have any missing values. The temperature value range from 5-20 (*C) approximately, and the humidity 	value have a range of 0 to 1.
 
-	Imputation Methods
-	Three methods were used, one at a time, to perform imputation, 1NN, KNN, and Weighted KNN.
-	Nearest Neighbor
+METHODS
+Imputation Methods
+Three methods were used, one at a time, to perform imputation, 1NN, KNN, and Weighted KNN.
+
+Nearest Neighbor
 For 1NN, the distance of the other features of missing value instance was calculated from other complete instances and the nearest neighbor, that is, the instance having the smallest distance between features from the missing value was considered for imputation.
 
 K Nearest Neighbor
@@ -13,7 +14,7 @@ The KNN method, however, computes the imputation using k smallest distances. In 
 Weighted K Nearest Neighbor
 Weighted KNN calculates the distance of each instances from the particular instance, then assigns a weight to each class, in order to predict the class of missing value more accurately. The weight is calculated by inversing the distance of each instance and dividing it by the sum of all inversed distance. The class having the highest weight is then used for imputation.
 
-	Distance Measures
+Distance Measures
 
 Euclidean Distance, Cosine Distance and Hamming Distance were used to calculate the distances between two features of an instance. For continuous features (Temperature & Humidity), Euclidean distance and Cosine Distance was used, and for categorical (Summary) hamming distance was used.
 
@@ -23,14 +24,14 @@ Distance((x1,y1),(x2,y2)) = √((x2 – x1)² + (y2 – y1)²)	[2]
 Where (x,y) represents each instances.
 
 Cosine Distance
-Cosine Distance measures the similarity between two instances by measuring the cosine angle between them. The cosine distance is calculated using:
- 		[3]
+Cosine Distance measures the similarity between two instances by measuring the cosine angle between them. The cosine distance is calculated using [3]
 Where a and b are two vectors of two instances.
 
 Hamming Distance
 Hamming Distance was used to calculate the categorical distance between two instances. It was calculated such that when two categories are not similar, the distance between them will be 1, if they are similar, distance will be 0. This approach was used because assigning different numerical distance values to difference between each category might give us a wrong imputation result. So a distance value of 1 is used to denote difference between the categories.
 
-	Feature Scaling
+
+Feature Scaling
 
 Since values of the features in dataset varies greatly, with temperature ranging from ~ 5-20 and humidity ranging from 0-1, the distance values might not be calculated properly as higher values can dominate the result. To avoid that, the features are all scaled within a range, reducing the deviation, so that all the values have the same effect on the result. Feature scaling was done using two methods: Min Max Scaling and Z Score Normalization.
 
@@ -45,7 +46,7 @@ Z Score Normalization also known as standardization, follows the properties of n
 Z = (x−μ)/σ	[4]
 Where x is the feature, μ is the mean and σ is the standard deviation.
 
-	Accuracy Measure
+Accuracy Measure
 
 Numerical Accuracy
 In order to calculate the accuracy of imputed values of numerical features (temperature and humidity), the following formula was used:
